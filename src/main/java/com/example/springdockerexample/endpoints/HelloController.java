@@ -9,6 +9,6 @@ public class HelloController {
 
 	@GetMapping(value = "/")
 	public ResponseEntity<String> greeting() {
-		return ResponseEntity.ok("Hola mundo! Luisma");
+		return ResponseEntity.ok("Hola mundo! Luisma y Ginasia");
 	}
 }

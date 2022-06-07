@@ -2,22 +2,41 @@ plugins {
 	id 'org.springframework.boot' version '2.7.0'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+    id 'com.palantir.docker' version '0.22.1'
+    id 'com.palantir.docker-run' version '0.22.1'
+    id 'pl.allegro.tech.build.axion-release' version '1.13.3'	
 }
-
-group = 'com.example'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
+    jcenter()
 }
+
+sourceCompatibility = '11'
+
+scmVersion.repository.customUsername =  project.findProperty("GITHUB_TOKEN") ?: null
+project.version = scmVersion.version
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+docker {
+    name "${project.name}:${project.version}"
+    files "$buildDir/libs/${project.name}-${project.version}.jar"
+    buildArgs([JAR_FILE: "${project.name}-${project.version}.jar"])
+}
+
+dockerRun {
+    name "${project.name}"
+    image "${project.name}:${project.version}"
+    ports '8080:8080'
+    clean true
+    daemonize false
 }
