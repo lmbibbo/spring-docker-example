@@ -1,4 +1,4 @@
-package com.example.springdockerexample.endpoints;
+package com.example.springdockerexample.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
