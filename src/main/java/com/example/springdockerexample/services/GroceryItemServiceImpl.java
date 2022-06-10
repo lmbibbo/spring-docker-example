@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.springdockerexample.model.GroceryItem;
 import com.example.springdockerexample.repository.ItemRepository;
 
+@Service
 public class GroceryItemServiceImpl implements GroceryItemService {
 
     @Autowired

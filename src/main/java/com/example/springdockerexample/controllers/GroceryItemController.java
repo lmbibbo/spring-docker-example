@@ -9,19 +9,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.springdockerexample.model.GroceryItem;
 import com.example.springdockerexample.services.GroceryItemService;
 
 @RestController
+@RequestMapping("api/groceryItems")
 public class GroceryItemController {
 
     @Autowired
     private GroceryItemService groceryItemService;
 
     @GetMapping("/")
-    public String home (){
+    public String home(){
      return "Spring REST De Luisma on Java!!!";
     }
  
