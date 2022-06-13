@@ -1,12 +1,14 @@
 package com.example.springdockerexample.repository;
 
 import java.util.List;
+
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
+
 import com.example.springdockerexample.model.GroceryItem;
 
 public interface ItemRepository extends MongoRepository<GroceryItem, String> {
-    
+       
     @Query("{name:'?0'}")
     GroceryItem findItemByName(String name);
     
@@ -14,5 +16,4 @@ public interface ItemRepository extends MongoRepository<GroceryItem, String> {
     List<GroceryItem> findAll(String category);
     
     public long count();
-
 }

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="mongo-client">
+        <xs:complexType>
+            <xs:attribute name="id" use="required" />
+            <xs:attribute name="host" use="required" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="db-factory">
+        <xs:complexType>
+            <xs:attribute name="id" use="required" />
+            <xs:attribute name="dbname" use="required" />
+            <xs:attribute name="mongo-client-ref" use="required" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="bean">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="constructor-arg">
+                    <xs:complexType>
+                        <xs:attribute name="ref" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" use="required" />
+            <xs:attribute name="class" use="required" />
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="repositories">
+        <xs:complexType>
+            <xs:attribute name="base-package" use="required" />
+            <xs:attribute name="mongo-template-ref" use="required" />
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
