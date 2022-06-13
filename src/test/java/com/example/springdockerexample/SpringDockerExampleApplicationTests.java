@@ -14,9 +14,4 @@ class SpringDockerExampleApplicationTests {
 	@Autowired
 	private GroceryItemController controller;
 
-	@Test
-	public void contextLoads() throws Exception {
-		assertThat(controller).isNotNull();
-	}
-
 }

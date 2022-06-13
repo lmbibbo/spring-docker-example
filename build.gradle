@@ -4,6 +4,7 @@ plugins {
 	id 'java'
     id 'com.palantir.docker' version '0.22.1'
     id 'com.palantir.docker-run' version '0.22.1'
+    id 'com.palantir.docker-compose' version '0.22.1'
     id 'pl.allegro.tech.build.axion-release' version '1.13.3'	
 }
 
@@ -19,8 +20,7 @@ project.version = scmVersion.version
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-devtools'
-    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb:2.7.0'
+    implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
@@ -40,4 +40,8 @@ dockerRun {
     ports '8080:8080'
     clean true
     daemonize false
+}
+
+dockerCompose {
+    dockerComposeFile 'my-docker-compose.yml'
 }
