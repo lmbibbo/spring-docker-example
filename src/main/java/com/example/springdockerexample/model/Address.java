@@ -1,10 +1,5 @@
 package com.example.springdockerexample.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-@Data
-@AllArgsConstructor
 public class Address {
     
     private String country;
@@ -15,4 +10,5 @@ public class Address {
         this.postCode = postCode;
         this.city = city;
     }
+    
 }

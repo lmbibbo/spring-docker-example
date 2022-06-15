@@ -51,5 +51,6 @@ dockerRun {
 }
 
 dockerCompose {
+    template 'my-template.yml'
     dockerComposeFile 'my-docker-compose.yml'
 }
