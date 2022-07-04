@@ -1,0 +1,37 @@
+version: '3.1'
+
+services: 
+  mongo-spring:
+    image: mongo
+    container_name: mongo-container
+    hostname: mongo.host
+    networks:
+      - springboot-network
+    ports:
+      - 27017:27017
+    restart: always
+    volumes: 
+      - ./data:/dataSpring/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongoadmin
+      MONGO_INITDB_ROOT_PASSWORD: mongoadmin
+    command: mongod
+ 
+  springboot:
+    links:
+      - mongo-spring
+    image: spring-docker-example:0.0.3-SNAPSHOT
+    container_name: springboot-container
+    depends_on:
+      - mongo-spring
+    networks:
+      - springboot-network
+    ports:
+      - 8080:8080
+    restart: always
+    volumes: 
+      - ./data:/dataSpring/db
+
+networks:
+  springboot-network:
+    driver: bridge
